@@ -1,0 +1,57 @@
+<meta charset="UTF-8">
+
+<p><button id="reset">Reset</button></p>
+
+<canvas width="1200" height="500"></canvas>
+
+
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    var botao = document.getElementById('reset');
+
+    init();
+
+    var raio;
+
+    function init(){
+        pincel.fillStyle = 'grey';
+        pincel.fillRect(0, 0, 1200, 500);
+        raio = 10;
+    }
+
+    function desenhaCirculo(evento) {
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        
+        console.log(x + ',' + y);
+
+        if(evento.shiftKey){
+            raio = raio + 10;
+        }
+
+        if(evento.ctrlKey){
+            raio = raio - 10;
+            if(raio < 10){
+                raio = 10;
+            }
+        }
+
+        
+        pincel.fillStyle = 'pink';
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * 3.14);
+        pincel.fill();
+        
+
+    }
+
+    tela.onclick = desenhaCirculo;
+    botao.onclick = init;
+    
+
+</script>
