@@ -1,0 +1,51 @@
+<meta charset="UTF-8">
+
+
+<canvas width = "600" height="400"></canvas>
+
+<script>
+
+var tela = document.querySelector("canvas");
+var pincel = tela.getContext("2d");
+ 
+pincel.fillStyle = "#faca91"
+pincel.fillRect(0, 0, 600, 400)
+
+aberto();
+
+function aberto(){  
+    pinta("aberto.jpg")
+    /*
+    var rosto = new Image();
+    rosto.src = "aberto.jpg";
+        rosto.onload = function(){
+        pincel.drawImage(rosto, 100, 100, 360, 200);
+    }
+    */
+}    
+
+function fechado(){
+    pinta("fechado.jpg")
+    /*
+    var rosto = new Image();
+    rosto.src = "fechado.jpg";
+    rosto.onload = function(){
+        pincel.drawImage(rosto, 100, 100, 360, 200);
+    }
+    */
+}
+
+function pinta(arquivo){  
+    var rosto = new Image();
+    rosto.src = arquivo;
+        rosto.onload = function(){
+        pincel.drawImage(rosto, 70, 100, 460, 200);
+    }
+} 
+
+tela.onmouseenter = fechado;
+tela.onmouseleave = aberto;
+    
+
+
+</script>
